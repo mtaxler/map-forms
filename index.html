@@ -1,0 +1,225 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>CGLL Map Update Forms</title>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrapValidator.min.css">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" type="text/css" href="leaflet.draw.css">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="leaflet.draw.js"></script>
+		<script type="text/javascript" src="dropdown.js"></script>
+		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bootstrapValidator.min.js"></script>
+		<script src="http://www.mapquestapi.com/sdk/leaflet/v1.0/mq-map.js?key=Fmjtd%7Cluur2gu1lu%2Crx%3Do5-9azgl6"></script>
+		<script type="text/javascript" src="formValidate.js"></script>
+
+	</head>
+	<body role="document">
+		<div class="container">
+			
+			
+
+			<div id="content" class="row">
+
+				<div class="row">
+					<div class="col-med-6 col-md-offset-3">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="active mapTabs"><a href="#stewardship" role="tab" id="stew" data-toggle="tab">Stewardship</a></li>
+							<li><a href="#institution" class="mapTabs" role="tab" id="inst" data-toggle="tab">Institution</a></li>
+							<li><a href="#people" class="mapTabs" role="tab" data-toggle="tab">People</a></li>
+							<li><a href="#workshops" class="mapTabs" id="work" role="tab" data-toggle="tab">Workshops</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane active" id="stewardship">
+							<div class="col-md-6 col-md-offset-3">
+								<h3>Update Stewardship Content on Map:</h3>
+								<form role="form" action="stewardship.php" method="post" class="mapUpdate">
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+									</div>
+									<div class="form-group">
+										<label for="description">Description</label>
+										<input type="text" class="form-control" name="description" id="description" placeholder="Enter a short description">
+									</div>
+
+									<div class="form-group">
+										<label for="location">Location</label>
+										<input type="text" class="form-control" name="location" id="location" placeholder="ex: Duluth, MN">
+									</div>
+
+									<div class="form-group">
+										<label for="photolink">Photo link:</label>
+										<input type="url" class="form-control" name="photolink" id="photolink" placeholder="ex: http://www.website.com/photo.jpg">
+									</div>
+
+									<div id="map"></div>
+
+									<div class="form-group">
+										<label for="latitude">Latitude</label>
+										<input type="text" class="form-control" name="latitude" id="latitude" placeholder="ex: 41.11">
+									</div>
+
+									<div class="form-group">
+										<label for="longitude">Longitude</label>
+										<input type="text" class="form-control" name="longitude" id="longitude" placeholder="ex: -92.1">
+									</div>
+									<input type="hidden" name="SubmitCheck" value="sent">
+									<input type="submit">
+
+								  <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+								</form>
+							</div>
+						</div>
+						<div class="tab-pane" id="institution">
+							<div class="col-md-6 col-md-offset-3">
+								<h3>Add an Institution to the Map:</h3>
+								<form role="form" action="institution.php" method="post" class="mapUpdate">
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+									</div>
+									<div class="form-group">
+										<label for="category">Category</label>
+										<select name="category" class="type-selector form-control" id="category">
+											<option value="SCHOOL">School</option>
+											<option value="INFORMAL RESEARCH" >Informal Education</option>
+											<option value="RESEARCH INSTITUTION">Research</option>
+										</select>
+									</div>
+									<div class="form-group" id="levelDiv">
+										<label for="level">Level</label>
+										<select name="level" class="form-control" id="level">
+											<option value=""></option>
+											<option value="ELEMENTARY">ELEMENTARY</option>
+											<option value="MIDDLE">MIDDLE</option>
+											<option value="HIGH">HIGH</option>
+										</select>
+										<!-- <input type="text" class="form-control" name="level" id="level" placeholder=""> -->
+									</div>
+									<div class="form-group">
+										<label for="location">Location</label>
+										<input type="text" class="form-control" name="location" id="location" placeholder="ex: Duluth, MN">
+									</div>
+
+									<div id="map2"></div>
+
+									<div class="form-group">
+										<label for="latitude2">Latitude</label>
+										<input type="text" class="form-control" name="latitude2" id="latitude2" placeholder="ex: 41.11">
+									</div>
+
+									<div class="form-group">
+										<label for="longitude2">Longitude</label>
+										<input type="text" class="form-control" name="longitude2" id="longitude2" placeholder="ex: -92.1">
+									</div>
+									<input type="hidden" name="SubmitCheck" value="sent">
+									<input type="submit">
+								</form>
+							</div>
+						</div>
+						<div class="tab-pane" id="people">
+							<div class="col-md-6 col-md-offset-3">
+								<h3>Add a new person to the map:</h3>
+								<form role="form" action="people.php" method="post" class="mapUpdate">
+									<div class="form-group">
+										<label for="institutionName">Institution Name (if it isn't listed here click the institution tab to add it)</label>
+										<select name="institutionName" class="type-selector form-control" id="institutionName"></select>
+									</div>
+									<div class="form-group">
+										<label for="firstname">First Name</label>
+										<input type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter first name">
+									</div>
+									<div class="form-group">
+										<label for="lastname">Last Name</label>
+										<input type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter last name">
+									</div>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="text" class="form-control" name="email" id="email" placeholder="jdoe@example.com">
+									</div>
+									<!-- <div class="form-group">
+										<label for="institutionName">Institution Name</label>
+										<input type="text" class="form-control" name="institutionName" id="institutionName" placeholder="Institution name">
+									</div> -->
+									<div class="form-group">
+										<label for="link">Link url (optional)</label>
+										<input type="url" class="form-control" name="link" id="link" placeholder="http://www.example.com">
+									</div>
+									<div class="form-group">
+										<label for="linkDescription">Link Description (optional)</label>
+										<input type="text" class="form-control" name="linkDescription" id="linkDescription" placeholder="">
+									</div>
+									<div class="form-group">
+										<label for="link">Photo link url (optional)</label>
+										<input type="url" class="form-control" name="photolink" id="photolink" placeholder="http://www.example.com/image.png">
+									</div>
+									<div class="form-group">
+										<label for="subject">Teaching/research subject (optional)</label>
+										<input type="text" class="form-control" name="subject" id="subject" placeholder="">
+									</div>
+									<input type="hidden" name="SubmitCheck" value="sent">
+									<input type="submit">
+								</form>
+							</div>
+						</div>
+						<div class="tab-pane" id="workshops">
+							<div class="col-md-6 col-md-offset-3">
+								<h3>Workshop Content on Map:</h3>
+								<form role="form" action="workshops.php" method="post" class="mapUpdate">
+									<div class="form-group">
+										<label for="title">Title</label>
+										<input type="text" class="form-control" name="title" id="title" placeholder="Enter workshop title">
+									</div>
+									<div class="form-group">
+										<label for="description">Description</label>
+										<input type="text" class="form-control" name="description" id="description" placeholder="Enter a short description">
+									</div>
+
+									<div class="form-group">
+										<label for="location">Location</label>
+										<input type="text" class="form-control" name="location" id="location" placeholder="ex: Duluth, MN">
+									</div>
+									<div class="form-group">
+										<label for="date">Date</label>
+										<input type="text" class="form-control" name="date" id="date" placeholder="ex: 7/15/2014">
+									</div>
+									<div class="form-group">
+										<label for="url">Workshop web page URL:</label>
+										<input type="url" class="form-control" name="url" placeholder="ex: http://www.website.com">
+									</div>
+									<div class="form-group">
+										<label for="photolink">Photo link:</label>
+										<input type="url" class="form-control" name="photolink" id="photolink" placeholder="ex: http://www.website.com/photo.jpg">
+									</div>
+
+									<div id="map3"></div>
+
+									<div class="form-group">
+										<label for="latitude3">Latitude</label>
+										<input type="text" class="form-control" name="latitude3" id="latitude3" placeholder="ex: 41.11">
+									</div>
+
+									<div class="form-group">
+										<label for="longitude3">Longitude</label>
+										<input type="text" class="form-control" name="longitude3" id="longitude3" placeholder="ex: -92.1">
+									</div>
+									<input type="hidden" name="SubmitCheck" value="sent">
+									<input type="submit">
+
+								  <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+								</form>
+							</div>
+				
+						</div>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>
