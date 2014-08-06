@@ -11,7 +11,8 @@ $(document).ready(function() {
     map.addLayer(drawnItems);
     var drawControl = new L.Control.Draw({
         edit: {
-            featureGroup: drawnItems
+            featureGroup: drawnItems,
+            edit: false
         },
         position: 'topright',
         draw: {
@@ -47,7 +48,8 @@ $(document).ready(function() {
     map2.addLayer(drawnItems2);
     var drawControl2 = new L.Control.Draw({
         edit: {
-            featureGroup: drawnItems2
+            featureGroup: drawnItems2,
+            edit: false
         },
         position: 'topright',
         draw: {
@@ -86,7 +88,8 @@ $(document).ready(function() {
     map3.addLayer(drawnItems3);
     var drawControl3 = new L.Control.Draw({
         edit: {
-            featureGroup: drawnItems3
+            featureGroup: drawnItems3,
+            edit: false
         },
         position: 'topright',
         draw: {
